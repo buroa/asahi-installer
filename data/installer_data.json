@@ -196,6 +196,51 @@
             ]
         },
         {
+            "name": "Talos UEFI environment only (m1n1 + U-Boot + ESP)",
+            "default_os_name": "UEFI boot",
+            "boot_object": "m1n1.bin",
+            "next_object": "m1n1/boot.bin",
+            "package": "uefi-only-20231220-1.zip",
+            "supported_fw": ["12.3", "12.3.1", "13.5"],
+            "partitions": [
+                {
+                    "name": "EFI",
+                    "type": "EFI",
+                    "size": "500MB",
+                    "format": "fat",
+                    "copy_firmware": true,
+                    "copy_installer_data": true,
+                    "source": "esp"
+                },
+                {
+                    "name": "BIOS",
+                    "type": "Linux",
+                    "size": "1MB"
+                },
+                {
+                    "name": "BOOT",
+                    "type": "Linux",
+                    "size": "1000MB"
+                },
+                {
+                    "name": "META",
+                    "type": "Linux",
+                    "size": "1MB"
+                },
+                {
+                    "name": "STATE",
+                    "type": "Linux",
+                    "size": "100MB"
+                },
+                {
+                    "name": "EPHEMERAL",
+                    "type": "Linux",
+                    "size": "1000MB",
+                    "expand": true
+                }
+            ]
+        },
+        {
             "name": "Tethered boot (m1n1, for development)",
             "default_os_name": "m1n1 proxy",
             "expert": true,
